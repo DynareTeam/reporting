@@ -48,7 +48,15 @@ for i=1:size(data,1)
         fprintf(fid, '[');
     end
 
-    fprintf(fid, dataString, round(data(i)*precision)/precision);
+    if o.tableReplaceNaNbyDot
+        if isnan(round(data(i)*precision)/precision)
+            fprintf(fid, '%s', '.');
+        else
+            fprintf(fid, dataString, round(data(i)*precision)/precision);
+        end
+    else
+        fprintf(fid, dataString, round(data(i)*precision)/precision);
+    end
 
     if o.tableShowMarkers
         fprintf(fid, ']');

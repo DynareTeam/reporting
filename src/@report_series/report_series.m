@@ -76,6 +76,8 @@ o.tableDataRhs = '';
 
 o.zeroTol = 1e-6;
 
+o.tableReplaceNaNbyDot = false;
+
 if nargin == 1
     assert(isa(varargin{1}, 'report_series'),['@report_series.report_series: with one arg you ' ...
                         'must pass a report_series object']);
